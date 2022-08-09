@@ -1,8 +1,11 @@
 <ngx-numeric-range-form-field
 	[formControl]="rangeControl"
 	label="Numeric range"
+	[minimumControlName]="'x'"
+	[maximumControlName]="'y'"
+	[updateOn]="'change'"
+	[minReadonly]="true"
 	(blurred)="onBlur()"
 	(enterPressed)="onEnter()"
 	(numericRangeChanged)="onValueChange($event)"
-	[minReadonly]="true"
 ></ngx-numeric-range-form-field>

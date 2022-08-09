@@ -10,26 +10,31 @@ import { numericRangeValues } from './numeric-range.validator';
 @Injectable()
 export class NumericRangeFormService {
 	private form: FormGroup;
+	private minimumControlName = 'minimum';
+	private maximumControlName = 'maximum';
 
 	constructor() {
-		this.form = new FormGroup(
-			{
-				minimum: new FormControl(null, { updateOn: 'blur' }),
-				maximum: new FormControl(null, { updateOn: 'blur' })
-			},
-			{ validators: numericRangeValues }
-		);
+		this.form = new FormGroup({});
 	}
 
 	get minimumControl(): FormControl {
-		return this.form.get('minimum') as FormControl;
+		return this.form.get(this.minimumControlName) as FormControl;
 	}
 
 	get maximumControl(): FormControl {
-		return this.form.get('maximum') as FormControl;
+		return this.form.get(this.maximumControlName) as FormControl;
 	}
 
 	get formGroup(): FormGroup {
+		return this.form;
+	}
+
+	init(minimumControlName = 'minimum', maximumControlName = 'maximum', updateOn: 'blur' | 'change' | 'submit' = 'change'): FormGroup {
+		this.minimumControlName = minimumControlName;
+		this.maximumControlName = maximumControlName;
+		this.form.addControl(this.minimumControlName, new FormControl(null, { updateOn }));
+		this.form.addControl(this.maximumControlName, new FormControl(null, { updateOn }));
+		this.form.setValidators(numericRangeValues(this.minimumControlName, this.maximumControlName));
 		return this.form;
 	}
 

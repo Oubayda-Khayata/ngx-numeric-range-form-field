@@ -28,7 +28,6 @@ import {
 } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { INumericRange } from '../form/model/numeric-range-field.model';
 import { NumericRangeFormService } from '../form/numeric-range-form.service';
 
 @Component({
@@ -54,10 +53,13 @@ export class NumericRangeFormFieldContainerComponent
 	@Input() minimumErrorMessage = 'Minimum has been reached!';
 	@Input() maximumErrorMessage = 'Maximum has exceeded!';
 	@Input() invalidRangeErrorMessage = 'Inserted range is not valid!';
+	@Input() minimumControlName = 'minimum';
+	@Input() maximumControlName = 'maximum';
+	@Input() updateOn: 'change' | 'blur' | 'submit' = 'change';
 
 	@Output() blurred = new EventEmitter<void>();
 	@Output() enterPressed = new EventEmitter<void>();
-	@Output() numericRangeChanged = new EventEmitter<INumericRange>();
+	@Output() numericRangeChanged = new EventEmitter<any>();
 
 	formGroup: FormGroup = this.formService.formGroup;
 	control = new FormControl();
@@ -83,6 +85,10 @@ export class NumericRangeFormFieldContainerComponent
 	}
 
 	ngOnInit(): void {
+		this.formService.init(
+			this.minimumControlName,
+			this.maximumControlName,
+			this.updateOn);
 		this.setSyncValidator(this.controlDirective.control.validator);
 		this.setAsyncValidator(this.controlDirective.control.asyncValidator);
 
@@ -97,7 +103,7 @@ export class NumericRangeFormFieldContainerComponent
 		this.unsubscribe$.complete();
 	}
 
-	writeValue(value: INumericRange): void {
+	writeValue(value: any): void {
 		value === null
 			? this.control.reset()
 			: this.control.setValue(value, {
@@ -134,7 +140,7 @@ export class NumericRangeFormFieldContainerComponent
 		this.blurred.emit();
 	}
 
-	onRangeValuesChanged(value: INumericRange): void {
+	onRangeValuesChanged(value: any): void {
 		this.numericRangeChanged.emit(value);
 	}
 
