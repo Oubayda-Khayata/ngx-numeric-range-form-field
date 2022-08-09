@@ -1,7 +1,11 @@
+### 2.3.1
+
+Improve input change detection.
+
 ### 2.3.0
 
-Added custom controls names
-Added custom event name for control to update upon
+Added custom controls names.
+Added custom event name for control to update upon.
 
 ### 2.2.0
 
