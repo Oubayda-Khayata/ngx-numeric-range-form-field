@@ -11,7 +11,6 @@ import {
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NumericRangeFormFieldControlComponent } from '../control/numeric-range-form-field-control.component';
-import { INumericRange } from '../form/model/numeric-range-field.model';
 import { NumericRangeFormService } from '../form/numeric-range-form.service';
 import { NumericRangeFormFieldContainerComponent } from './numeric-range-form-field-container.component';
 
@@ -47,7 +46,7 @@ class HostComponent {
 		return;
 	}
 
-	onNumericRangeChanged(value: INumericRange): void {
+	onNumericRangeChanged(value: any): void {
 		return;
 	}
 

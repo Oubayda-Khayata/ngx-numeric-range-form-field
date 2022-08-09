@@ -1,3 +1,8 @@
+### 2.3.0
+
+Added custom controls names
+Added custom event name for control to update upon
+
 ### 2.2.0
 
 Added readonly for every input.

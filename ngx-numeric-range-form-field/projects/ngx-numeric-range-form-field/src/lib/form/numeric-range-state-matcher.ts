@@ -9,11 +9,13 @@ import { ErrorStateMatcher } from '@angular/material/core';
 export class NumericRangeStateMatcher implements ErrorStateMatcher {
 	isErrorState(
 		control: FormControl | null,
-		form: FormGroup | FormGroupDirective | NgForm | null
+		form: FormGroup | FormGroupDirective | NgForm | null,
+		minimumControlName = 'minimum',
+		maximumControlName = 'maximum'
 	): boolean {
 		if (!control.parent && form instanceof FormGroup) {
-			const minimumControl = form.get('minimum') as FormControl;
-			const maximumControl = form.get('maximum') as FormControl;
+			const minimumControl = form.get(minimumControlName) as FormControl;
+			const maximumControl = form.get(maximumControlName) as FormControl;
 
 			const isFormInvalid = form.touched && form.invalid;
 

@@ -71,7 +71,7 @@ form: FormGroup;
 		console.log('Enter pressed!');
 	}
 
-	onValueChange(value: INumericRange): void {
+	onValueChange(value: any): void {
 		console.log('Changed value: ', value);
 	}
 ```
@@ -93,23 +93,17 @@ Customizable input and output decorators:
 @Input() minimumErrorMessage = 'Minimum has been reached!'; // Customizable error message when field has min validation
 @Input() maximumErrorMessage = 'Maximum has exceeded!'; // Customizable error message when field has max validation
 @Input() invalidRangeErrorMessage = 'Inserted range is not valid!'; // Customizable error message when field has invalid numeric range
+@Input() minimumControlName = 'minimum'; // Customizable minimum control name
+@Input() maximumControlName = 'maximum'; // Customizable maximum control name
+@Input() updateOn: 'change' | 'blur' | 'submit' = 'change'; // The event name for control to update upon
 
 @Output() blurred = new EventEmitter<void>(); // Event which emits where user leaves control (focus out)
 @Output() enterPressed = new EventEmitter<void>(); // Event which emits when enter is pressed
-@Output() numericRangeChanged = new EventEmitter<INumericRange>(); // Event which emits when one of range value is changed
-```
-
-It is based on following interface:
-
-```typescript
-export interface INumericRange {
-	minimum: number;
-	maximum: number;
-}
+@Output() numericRangeChanged = new EventEmitter<any>(); // Event which emits when one of range value is changed
 ```
 
 # License
 
 Apache License
 
-Copyright (c) 2022 Dino Klicek
+Copyright (c) 2022 Dino Klicek, Edited by Oubayda Khayata

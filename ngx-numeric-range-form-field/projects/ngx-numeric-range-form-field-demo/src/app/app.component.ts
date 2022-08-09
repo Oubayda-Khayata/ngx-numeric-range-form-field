@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { INumericRange } from 'projects/ngx-numeric-range-form-field/src/lib/form/model/numeric-range-field.model';
 
 @Component({
 	selector: 'app-root',
@@ -14,10 +13,10 @@ export class AppComponent {
 		this.form = new FormGroup({
 			range: new FormControl(
 				{
-					minimum: 10,
-					maximum: 100,
-				} as INumericRange,
-				[Validators.required, Validators.min(10), Validators.max(100)]
+					x: 10,
+					y: 100,
+				},
+				[Validators.required]
 			),
 		});
 	}
@@ -35,7 +34,7 @@ export class AppComponent {
 		this.rangeControl.disable();
 	}
 
-	onValueChange(value: INumericRange): void {
+	onValueChange(value: any): void {
 		console.log(
 			'Changed value: ',
 			value,

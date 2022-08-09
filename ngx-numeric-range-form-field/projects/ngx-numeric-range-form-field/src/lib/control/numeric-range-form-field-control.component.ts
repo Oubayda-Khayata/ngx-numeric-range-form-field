@@ -23,7 +23,6 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { INumericRange } from '../form/model/numeric-range-field.model';
 import { NumericRangeFormService } from '../form/numeric-range-form.service';
 import { NumericRangeStateMatcher } from '../form/numeric-range-state-matcher';
 
@@ -48,7 +47,7 @@ export class NumericRangeFormFieldControlComponent
 		OnInit,
 		DoCheck,
 		OnDestroy,
-		MatFormFieldControl<INumericRange>,
+		MatFormFieldControl<any>,
 		ControlValueAccessor,
 		Validator {
 	static nextId = 0;
@@ -57,7 +56,7 @@ export class NumericRangeFormFieldControlComponent
 		return this.formGroup.value;
 	}
 	@Input()
-	set value(value: INumericRange) {
+	set value(value: any) {
 		this.formGroup.patchValue(value);
 		this.stateChanges.next();
 	}
@@ -80,10 +79,13 @@ export class NumericRangeFormFieldControlComponent
 	@Input() disabled: boolean;
 	@Input() errorStateMatcher: ErrorStateMatcher;
 	@Input() autofilled?: boolean;
+	@Input() minimumControlName = 'minimum';
+	@Input() maximumControlName = 'maximum';
+	@Input() updateOn: 'change' | 'blur' | 'submit' = 'change';
 
 	@Output() blurred = new EventEmitter<void>();
 	@Output() enterPressed = new EventEmitter<void>();
-	@Output() numericRangeChanged = new EventEmitter<INumericRange>();
+	@Output() numericRangeChanged = new EventEmitter<any>();
 
 	@HostBinding('class.floated')
 	get shouldLabelFloat(): boolean {
@@ -97,13 +99,15 @@ export class NumericRangeFormFieldControlComponent
 	id = `numeric-range-form-control-id-${NumericRangeFormFieldControlComponent.nextId++}`;
 
 	get empty(): boolean {
-		return !this.value.minimum && !this.value.maximum;
+		return !this.value[this.minimumControlName] && !this.value[this.maximumControlName];
 	}
 
 	get errorState() {
 		return this.numericRangeErrorMatcher.isErrorState(
 			this.ngControl.control as FormControl,
-			this.formGroup
+			this.formGroup,
+			this.minimumControlName,
+			this.maximumControlName
 		);
 	}
 
@@ -139,6 +143,11 @@ export class NumericRangeFormFieldControlComponent
 	}
 
 	ngOnInit(): void {
+		this.formService.init(
+			this.minimumControlName,
+			this.maximumControlName,
+			this.updateOn
+		);
 		this.formService.setSyncValidators(this.ngControl.control.validator);
 		this.formService.setAsyncValidators(this.ngControl.control.asyncValidator);
 
@@ -156,7 +165,7 @@ export class NumericRangeFormFieldControlComponent
 		this.unsubscribe$.complete();
 	}
 
-	writeValue(value: INumericRange): void {
+	writeValue(value: any): void {
 		value === null
 			? this.formGroup.reset()
 			: this.formGroup.setValue(value, { emitEvent: false });
