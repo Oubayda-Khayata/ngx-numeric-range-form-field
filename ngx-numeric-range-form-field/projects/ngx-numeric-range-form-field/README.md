@@ -2,16 +2,16 @@
 
 An Angular Material UI numeric range input form field. It is based on custom form field control and control value accessor which allows inserting range numbers, minimum and maximum.
 
-![Numeric range form field](https://github.com/dineeek/ngx-numeric-range-form-field/blob/main/ngx-numeric-range-form-field/Numeric%20Range%20Form%20Field.png)
+![Numeric range form field](https://github.com/Oubayda-Khayata/ngx-numeric-range-form-field/blob/main/ngx-numeric-range-form-field/Numeric%20Range%20Form%20Field.png)
 
 <p align="start">
-    <a href="https://www.npmjs.com/package/ngx-numeric-range-form-field"><img alt="weekly downloads from npm" src="https://img.shields.io/npm/dw/ngx-numeric-range-form-field.svg?style=flat-square"></a>
-    <a href="https://www.npmjs.com/package/ngx-numeric-range-form-field"><img alt="npm version" src="https://img.shields.io/npm/v/ngx-numeric-range-form-field.svg?style=flat-square"></a>
+    <a href="https://www.npmjs.com/package/ngx-custom-numeric-range-form-field"><img alt="weekly downloads from npm" src="https://img.shields.io/npm/dw/ngx-custom-numeric-range-form-field.svg?style=flat-square"></a>
+    <a href="https://www.npmjs.com/package/ngx-custom-numeric-range-form-field"><img alt="npm version" src="https://img.shields.io/npm/v/ngx-custom-numeric-range-form-field.svg?style=flat-square"></a>
 </p>
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdineeek%2Fngx-numeric-range-form-field.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdineeek%2Fngx-numeric-range-form-field?ref=badge_shield)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FOubayda-Khayata%2Fngx-numeric-range-form-field.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FOubayda-Khayata%2Fngx-numeric-range-form-field?utm_source=share_link)
 
 # Feature
 
@@ -19,12 +19,12 @@ An Angular Material UI numeric range input form field. It is based on custom for
 - Auto range validation.
 - Supports reactive forms.
 
-**[View live demo on StackBlitz.](https://ngx-numeric-range-form-field.stackblitz.io)**
+**[View live demo on StackBlitz.](https://ngx-custom-numeric-range-form-field.stackblitz.io)**
 
 # Install
 
 ```shell
-npm install ngx-numeric-range-form-field
+npm install ngx-custom-numeric-range-form-field
 ```
 
 # Usage

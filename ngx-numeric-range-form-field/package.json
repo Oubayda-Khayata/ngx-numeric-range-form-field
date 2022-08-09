@@ -1,5 +1,5 @@
 {
-	"name": "ngx-numeric-range-form-field",
+	"name": "ngx-custom-numeric-range-form-field",
 	"version": "0.0.0",
 	"scripts": {
 		"test": "ng test ngx-numeric-range-form-field --watch --code-coverage",
