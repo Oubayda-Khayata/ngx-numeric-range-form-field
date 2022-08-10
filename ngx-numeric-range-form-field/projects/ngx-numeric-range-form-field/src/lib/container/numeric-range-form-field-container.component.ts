@@ -56,6 +56,7 @@ export class NumericRangeFormFieldContainerComponent
 	@Input() minimumControlName = 'minimum';
 	@Input() maximumControlName = 'maximum';
 	@Input() updateOn: 'change' | 'blur' | 'submit' = 'change';
+	@Input() controlStyle = '';
 
 	@Output() blurred = new EventEmitter<void>();
 	@Output() enterPressed = new EventEmitter<void>();

@@ -96,6 +96,7 @@ Customizable input and output decorators:
 @Input() minimumControlName = 'minimum'; // Customizable minimum control name
 @Input() maximumControlName = 'maximum'; // Customizable maximum control name
 @Input() updateOn: 'change' | 'blur' | 'submit' = 'change'; // The event name for control to update upon
+@Input() controlStyle = ''; // Custom control style
 
 @Output() blurred = new EventEmitter<void>(); // Event which emits where user leaves control (focus out)
 @Output() enterPressed = new EventEmitter<void>(); // Event which emits when enter is pressed

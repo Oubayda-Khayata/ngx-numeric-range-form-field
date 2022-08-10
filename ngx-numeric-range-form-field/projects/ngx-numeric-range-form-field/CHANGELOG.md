@@ -1,3 +1,7 @@
+### 2.4.0
+
+Added custom control style.
+
 ### 2.3.1
 
 Improve input change detection.
